@@ -26,9 +26,6 @@ jobs:
 
       - name: Display GitVersion config
         uses: gittools/actions/gitversion/command@v3.0.0
-        with:
-          useConfigFile: true
-          arguments: '/showConfig'
       # - name: 版本计算
       #   id: version
       #   run: gitversion

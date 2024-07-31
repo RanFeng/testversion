@@ -20,6 +20,9 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
+      - name: Determine Version
+        id: gitversion
+        uses: gittools/actions/gitversion/execute@v3.0.0
       - name: 版本计算
         id: version
         uses: codacy/git-version@2.8.0
@@ -28,6 +31,9 @@ jobs:
       - name: 本次版本号
         run: |
           echo ${{ steps.version.outputs.version }}
+          echo ${{ steps.gitversion.outputs.MajorMinorPatch }}
+          echo ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
+          echo ${{ steps.gitversion.outputs.FullSemVer }}
       - name: 上一次版本号
         run: |
           echo ${{ steps.version.outputs.previous-version }}

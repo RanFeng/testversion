@@ -19,14 +19,15 @@ jobs:
       contents: write
     
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Determine Version
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v3.0.0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.0.0
+        with:
+          versionSpec: '6.x'
       - name: 版本计算
         id: version
         uses: codacy/git-version@2.8.0

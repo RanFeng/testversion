@@ -24,11 +24,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install GitVersion
-        id: gitversion
-        uses: gittools/actions/gitversion/setup@v3.0.0
+      - name: Determine Version
+        uses: gittools/actions/gitversion/execute@v3.0.0
         with:
-          versionSpec: '6.x'
+          overrideConfig: |
+            update-build-number=false
+            next-version=3.0.0
       - name: 版本计算
         id: version
         run: gitversion

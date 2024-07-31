@@ -23,17 +23,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Install GitVersion
         uses: gittools/actions/gitversion/setup@v3.0.0
         with:
           versionSpec: '6.x'
+
       - name: Display GitVersion config
         id: version
         uses: gittools/actions/gitversion/execute@v3.0.0
+
       - name: 本次版本号
         run: |
           echo ${{ steps.version.outputs.semVer }}
           echo ${{ steps.version.outputs.majorMinorPatch }}
+
       - name: 注入版本号
         run: echo ${{ steps.version.outputs.version }} >> ./version.txt
       - name: 打包
@@ -43,6 +47,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ steps.version.outputs.semVer }}
           target_commitish: ${{ github.event.inputs.target_commitish }}
           files: inkmaster.tar.gz

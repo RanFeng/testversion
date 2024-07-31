@@ -31,9 +31,7 @@ jobs:
           versionSpec: '6.x'
       - name: 版本计算
         id: version
-        uses: gitversion
-        with:
-          prefix: "test-"
+        run: gitversion
       - name: 本次版本号
         run: |
           echo ${{ steps.version.outputs.MajorMinorPatch }}

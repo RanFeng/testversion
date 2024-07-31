@@ -43,7 +43,7 @@ jobs:
 
       - name: 打包
         run: tar -czf inkmaster.tar.gz ./version.txt
-        
+    
       - name: 发布
         uses: softprops/action-gh-release@v2
         env:

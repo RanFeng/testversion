@@ -28,16 +28,16 @@ jobs:
         with:
           versionSpec: '6.x'
       - name: Display GitVersion config
+        id: version
         uses: gittools/actions/gitversion/command@v3.0.0
       # - name: 版本计算
       #   id: version
       #   run: gitversion
-      # - name: 本次版本号
-      #   run: |
-      #     echo ${{ steps.version.outputs.MajorMinorPatch }}
-      #     echo ${{ steps.gitversion.outputs.MajorMinorPatch }}
-      #     echo ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
-      #     echo ${{ steps.gitversion.outputs.FullSemVer }}
+      - name: 本次版本号
+        run: |
+          echo ${{ steps.version.outputs.MajorMinorPatch }}
+          echo ${{ steps.version.outputs.CommitsSinceVersionSource }}
+          echo ${{ steps.version.outputs.FullSemVer }}
       # - name: 上一次版本号
       #   run: |
       #     echo ${{ steps.version.outputs.previous-version }}

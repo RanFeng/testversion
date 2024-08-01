@@ -37,6 +37,7 @@ jobs:
         run: |
           echo ${{ steps.version.outputs.semVer }}
           echo ${{ steps.version.outputs.majorMinorPatch }}
+          echo ${{ format('Hello {0} {1} {2}', 'Mona', 'the', 'Octocat') }}
 
       - name: 注入版本号
         run: echo ${{ steps.version.outputs.semVer }} >> ./version.txt

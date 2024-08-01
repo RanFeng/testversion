@@ -37,7 +37,7 @@ jobs:
         run: |
           echo ${{ steps.version.outputs.semVer }}
           echo ${{ steps.version.outputs.majorMinorPatch }}
-          echo ${{ format('{0}.{1}', steps.version.outputs.majorMinorPatch, steps.version.outputs.commitsSinceVersionSource) }}
+          echo ${{ format('{0}.{1}', steps.version.outputs.majorMinorPatch, steps.version.outputs.preReleaseNumber) }}
 
       - name: 注入版本号
         run: echo ${{ steps.version.outputs.semVer }} >> ./version.txt

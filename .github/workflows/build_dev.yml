@@ -32,7 +32,7 @@ jobs:
       - name: Display GitVersion config
         id: version
         uses: gittools/actions/gitversion/execute@v3.0.0
-     
+        
       - name: 本次版本号
         run: |
           echo ${{ steps.version.outputs.semVer }}
